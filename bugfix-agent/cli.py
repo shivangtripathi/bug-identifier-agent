@@ -11,6 +11,11 @@ from agents.orchestrator import Orchestrator
 app = typer.Typer(help="Multi-agent bug fixing CLI")
 
 
+@app.callback()
+def main() -> None:
+    """BugFix Agent CLI entrypoint."""
+
+
 @app.command()
 def chat(repo: str = ".") -> None:
     repo_root = str(Path(repo).resolve())

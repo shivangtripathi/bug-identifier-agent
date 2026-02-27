@@ -16,9 +16,9 @@ def _build_llm():
 
         return ChatOllama(model=settings.ollama_model, base_url=settings.ollama_base_url)
 
-    from langchain_openai import ChatOpenAI
+    from langchain_google_genai import ChatGoogleGenerativeAI
 
-    return ChatOpenAI(model=settings.openai_model, temperature=0)
+    return ChatGoogleGenerativeAI(model=settings.gemini_model, temperature=0)
 
 
 class PlannerAgent:

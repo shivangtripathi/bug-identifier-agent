@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir \
     langchain \
     langgraph \
     langsmith \
-    langchain-openai \
+    langchain-google-genai \
     langchain-community \
     pageindex \
     libcst \

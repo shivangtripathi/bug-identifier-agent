@@ -9,7 +9,7 @@ A dockerized multi-agent conversational bug-fixing system with:
 - Dependency impact analysis via `networkx`
 - Permission-gated bash execution (`yes` required)
 - Context compression for long conversations
-- Model provider switching via env (`openai` or `ollama`)
+- Model provider switching via env (`gemini` or `ollama`)
 - LangSmith tracing hooks and tags
 
 ## Structure
@@ -29,7 +29,7 @@ bugfix-agent/
 ## Run locally
 
 ```bash
-pip install langchain langgraph langsmith langchain-openai langchain-community pageindex libcst networkx pytest typer rich pydantic
+pip install langchain langgraph langsmith langchain-google-genai langchain-community pageindex libcst networkx pytest typer rich pydantic
 python cli.py chat --repo ./demo_repo
 ```
 
@@ -43,9 +43,10 @@ docker run -it -v $(pwd):/workspace agent
 ## Model switching
 
 ```bash
-# OpenAI
-export LLM_PROVIDER=openai
-export OPENAI_API_KEY=...
+# Gemini
+export LLM_PROVIDER=gemini
+export GOOGLE_API_KEY=...
+export GEMINI_MODEL=gemini-3-flash
 
 # Ollama (Gemma)
 export LLM_PROVIDER=ollama

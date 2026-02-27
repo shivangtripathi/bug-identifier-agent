@@ -5,6 +5,7 @@ from typing import Any
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from agents.planner_parsing import coerce_content_to_text, parse_structured_json
 from agents.schemas import StructuredPlan
 from config import settings
 from tools.pageindex_search import semantic_search
@@ -37,7 +38,8 @@ class PlannerAgent:
             content=f"Bug: {bug_description}\nSearch results: {json.dumps(index_hits, indent=2)}"
         )
         response = self.llm.invoke([sys, human])
-        raw = response.content if isinstance(response.content, str) else json.dumps(response.content)
-        data = json.loads(raw)
+        raw = coerce_content_to_text(response.content)
+        data = parse_structured_json(raw)
         plan = StructuredPlan.model_validate(data)
         return {"ok": True, "plan": plan.model_dump()}
+

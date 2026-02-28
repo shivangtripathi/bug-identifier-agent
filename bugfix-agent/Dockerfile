@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir \
     langsmith \
     langchain-google-genai \
     langchain-community \
-    pageindex \
+    chromadb \
     libcst \
     networkx \
     pytest \

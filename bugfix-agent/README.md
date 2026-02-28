@@ -1,10 +1,10 @@
-# BugFix Agent (LangGraph + PageIndex)
+# BugFix Agent (LangGraph + ChromaDB)
 
 A dockerized multi-agent conversational bug-fixing system with:
 
 - Planner + Executor agents orchestrated by LangGraph
 - Structured tool calls with JSON output
-- PageIndex-style semantic indexing (symbol-aware chunking; no vector DB)
+- ChromaDB-backed semantic indexing (symbol-aware chunking + local deterministic embeddings)
 - AST-safe code edits via `libcst` + unified diff preview
 - Dependency impact analysis via `networkx`
 - Permission-gated bash execution (`yes` required)
@@ -29,7 +29,7 @@ bugfix-agent/
 ## Run locally
 
 ```bash
-pip install langchain langgraph langsmith langchain-google-genai langchain-community pageindex libcst networkx pytest typer rich pydantic
+pip install langchain langgraph langsmith langchain-google-genai langchain-community chromadb libcst networkx pytest typer rich pydantic
 python cli.py chat --repo ./demo_repo
 ```
 
